@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35004.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodepageSelector", "CodepageSelector\CodepageSelector.csproj", "{100E6794-093F-442C-B500-D99C428B7B8A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub", "GitHub", "{3D52BAC5-E68E-43E6-93EB-CD99D8B2E078}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		.github\FUNDING.yml = .github\FUNDING.yml
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{100E6794-093F-442C-B500-D99C428B7B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{100E6794-093F-442C-B500-D99C428B7B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{100E6794-093F-442C-B500-D99C428B7B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{100E6794-093F-442C-B500-D99C428B7B8A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2C91C2F-A9EE-4957-BBE2-84B4416FF004}
+	EndGlobalSection
+EndGlobal
