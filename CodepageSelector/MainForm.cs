@@ -11,7 +11,7 @@ public partial class MainForm : Form {
 
   private readonly Font _unicodeFont = new("Arial Unicode MS", 12);
   
-  private Encoding? currentEncoding;
+  private Encoding? _currentEncoding;
 
   private int _currentCodePage;
   private int _CurrentCodePage {
@@ -20,96 +20,95 @@ public partial class MainForm : Form {
       if (this._currentCodePage == value)
         return;
 
-      this.SaveSelection();
+      this._SaveSelection();
       this.nudCurrentPage.Value = this._currentCodePage = value;
-      this.LoadCodePage(value);
+      this._LoadCodePage(value);
+      this.nudCurrentPage.BackColor = this._currentEncoding == null ? Color.Salmon : Color.LightGreen;
     }
   }
   
   public MainForm() {
     this.InitializeComponent();
-    this.CreateButtons(this.tlpCharacters);
+    this._CreateButtons(this.tlpCharacters);
     this._CurrentCodePage = Encoding.Default.CodePage;
   }
 
-  private void LoadCodePage(int codePageIndex) {
+  private void _LoadCodePage(int codePageIndex) {
     try {
-      this.currentEncoding = Encoding.GetEncoding(codePageIndex);
+      this._currentEncoding = Encoding.GetEncoding(codePageIndex);
     } catch (NotSupportedException) {
-      this.currentEncoding = null;
+      
+      // Codepage can not be loaded
+      this._currentEncoding = null;
+    } catch (ArgumentException) {
+      
+      // No valid codepage ID
+      this._currentEncoding = null;
     }
 
-    this.DisplayCharacters();
+    this._DisplayCharacters();
   }
 
-  private void DisplayCharacters() {
+  private void _DisplayCharacters() {
     var knownSelection = SelectionReaderWriter.GetSelection(this._CurrentCodePage);
+    var noKnownSelectionPresent = knownSelection == null || knownSelection.All(s => !s);
+    
+    var currentCharCode = 0;
+    foreach (var charButton in this.tlpCharacters.Controls.OfType<CharacterButton>()) {
+      var character = this._currentEncoding?.GetString([(byte)currentCharCode])[0];
+      charButton.Character = character;
+      if(character==null)
+        continue;
 
-    var i = 0;
-    foreach (var charButton in this.tlpCharacters.Controls.OfType<Button>()) {
-      charButton.Text = this.currentEncoding?.GetString([(byte)i]) ?? "???";
-      SetButton(charButton, knownSelection != null && knownSelection[i]);
-      ++i;
+      if (noKnownSelectionPresent)
+        charButton.IsSelected = currentCharCode>=0x80 && (char.IsDigit(character.Value) || char.IsLetter(character.Value));
+      else
+        charButton.IsSelected = knownSelection[currentCharCode];
+      
+      ++currentCharCode;
     }
   }
 
-  private void SaveSelection() {
-    var selected = this.tlpCharacters.Controls.OfType<Button>().Select(b => b.Tag is true).ToArray();
-    SelectionReaderWriter.SetSelection(this._CurrentCodePage,selected);
-  }
-
-
-  private void CreateButtons(TableLayoutPanel container) {
+  private void _SaveSelection() 
+    => SelectionReaderWriter.SetSelection(
+      this._CurrentCodePage,
+      this.tlpCharacters.Controls.OfType<CharacterButton>().Select(b => b.IsSelected).ToArray()
+    );
+  
+  private void _CreateButtons(TableLayoutPanel container) {
+    bool? currentDragMode = null;
+    
     for (var i = 0; i < 256; ++i) {
-      var charButton = new Button {
-        Text = string.Empty,
+      var charButton = new CharacterButton {
         Dock = DockStyle.Fill,
         Padding = Padding.Empty,
-        Margin = Padding.Empty,
+        Margin = new(1),
         Font = this._unicodeFont,
-        BackColor = SystemColors.ButtonFace,
         AutoSize = true,
-        Tag=false,
+        TextAlign = ContentAlignment.MiddleCenter,
       };
-      charButton.Click += this.CharButton_Click;
+      
+      charButton.MouseUp += (_, _) => currentDragMode = null;
+      charButton.MouseDown += (sender, _) => {
+        if (sender is not CharacterButton button)
+          return;
+        
+        currentDragMode = !button.IsSelected;
+      };
+      charButton.MouseEnter += (sender, _) => {
+        if (sender is not CharacterButton button || currentDragMode == null)
+          return;
+
+        button.IsSelected=currentDragMode.Value;
+      };
+
       container.Controls.Add(charButton);
       container.SetRow(charButton, 1+(i / 16));
       container.SetColumn(charButton, 1+(i % 16));
     }
+
   }
-
-  private static void SetButton(Button button, bool state) {
-    if (state) {
-      button.Tag = true;
-      button.BackColor = SystemColors.Highlight;
-      button.ForeColor = SystemColors.HighlightText;
-    } else {
-      button.Tag = false;
-      button.BackColor = GetCharacterClassColor(button.Text.Length == 1 ? button.Text[0] : null) ?? SystemColors.Control;
-      button.ForeColor = SystemColors.ControlText;
-    }
-  }
-
-  private static Color? GetCharacterClassColor(char? character) =>
-    character switch {
-      { } c when char.IsControl(c) => Color.Salmon,
-      { } c when char.IsWhiteSpace(c) => Color.LightSkyBlue,
-      { } c when char.IsLower(c) => Color.Yellow,
-      { } c when char.IsUpper(c) => Color.LightYellow,
-      { } c when char.IsLetter(c) => Color.LightGoldenrodYellow,
-      { } c when char.IsDigit(c) => Color.LimeGreen,
-      { } c when char.IsNumber(c) => Color.PaleGreen,
-      { } c when char.IsPunctuation(c) => Color.LightPink,
-      _ => null
-    };
-
-  private static void ToggleButton(Button button) => SetButton(button, button.Tag is not true);
-
-  private void CharButton_Click(object sender, EventArgs e) {
-    if (sender is Button button)
-      ToggleButton(button);
-  }
-
+  
   private void btBack_Click(object sender, EventArgs e) {
     if (this._CurrentCodePage > this.nudCurrentPage.Minimum)
       --this._CurrentCodePage;

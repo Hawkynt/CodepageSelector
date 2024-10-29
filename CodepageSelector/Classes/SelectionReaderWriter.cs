@@ -5,6 +5,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 
 namespace CodepageSelector.Classes;
+
 internal class SelectionReaderWriter {
 
   private static readonly FileInfo _FILE = new(@"Data\Selection.dict");
@@ -14,20 +15,20 @@ internal class SelectionReaderWriter {
 
   public static void SetSelection(int codepage, bool[] selection) {
     var dict = ParseFileContents(_FILE.ReadAllText());
-    dict[codepage]=selection;
+    dict[codepage] = selection;
     WriteFileContents(_FILE, dict);
   }
 
   private static void WriteFileContents(FileInfo file, Dictionary<int, bool[]> dict) {
     using var writer = new StreamWriter(file.FullName);
-    
+
     foreach (var entry in dict.OrderBy(kvp => kvp.Key)) {
       var selection = entry.Value;
-      
+
       // we do not write empty sets
-      if(!selection.Any(s=>s))
+      if (!selection.Any(s => s))
         continue;
-      
+
       writer.Write($"{{ {entry.Key}, [");
       var isFirst = true;
       int? rangeStart = null;
@@ -38,7 +39,7 @@ internal class SelectionReaderWriter {
         else if (rangeStart != null) {
           if (!isFirst)
             writer.Write(",");
-          
+
           writer.Write(rangeStart == i - 1 ? $"0x{rangeStart:X2}..0x{rangeStart:X2}" : $"0x{rangeStart:X2}..0x{i - 1:X2}");
           isFirst = false;
           rangeStart = null;
@@ -47,18 +48,18 @@ internal class SelectionReaderWriter {
       if (rangeStart != null) {
         if (!isFirst)
           writer.Write(",");
-        
+
         writer.Write(rangeStart == selection.Length - 1 ? $"0x{rangeStart:X2}..0x{rangeStart:X2}" : $"0x{rangeStart:X2}..0x{selection.Length - 1:X2}");
       }
 
-      writer.WriteLine("] }},");
+      writer.WriteLine("] },");
     }
   }
 
   private static Dictionary<int, bool[]> ParseFileContents(string fileContent) {
-    
+
     Dictionary<int, bool[]> result = [];
-    
+
     var matches = _PATTERN.Matches(fileContent);
 
     foreach (Match match in matches) {
@@ -70,13 +71,13 @@ internal class SelectionReaderWriter {
       foreach (var part in parts) {
         if (!part.Contains(".."))
           continue;
-        
+
         var rangeParts = part.Split([".."], StringSplitOptions.None);
         var start = Convert.ToInt32(rangeParts[0].Trim(), 16);
         var end = Convert.ToInt32(rangeParts[1].Trim(), 16);
 
         for (var i = start; i <= end; ++i)
-          selectedValues[i]=true;
+          selectedValues[i] = true;
       }
 
       result.Add(codepage, selectedValues);
@@ -84,4 +85,5 @@ internal class SelectionReaderWriter {
 
     return result;
   }
+  
 }

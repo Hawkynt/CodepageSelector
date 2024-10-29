@@ -124,6 +124,7 @@ partial class MainForm {
       this.btBack.TabIndex = 0;
       this.btBack.Text = "Back";
       this.btBack.UseVisualStyleBackColor = true;
+      this.btBack.Click += new System.EventHandler(this.btBack_Click);
       // 
       // nudCurrentPage
       // 
@@ -148,6 +149,7 @@ partial class MainForm {
             0,
             0,
             0});
+      this.nudCurrentPage.ValueChanged += new System.EventHandler(this.nudCurrentPage_ValueChanged);
       // 
       // btForward
       // 
@@ -157,6 +159,7 @@ partial class MainForm {
       this.btForward.TabIndex = 0;
       this.btForward.Text = "Forward";
       this.btForward.UseVisualStyleBackColor = true;
+      this.btForward.Click += new System.EventHandler(this.btForward_Click);
       // 
       // tableLayoutPanel1
       // 
