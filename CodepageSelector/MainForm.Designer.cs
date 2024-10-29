@@ -24,6 +24,7 @@ partial class MainForm {
   ///  the contents of this method with the code editor.
   /// </summary>
   private void InitializeComponent() {
+      this.components = new System.ComponentModel.Container();
       System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       System.Windows.Forms.Label label1;
@@ -58,10 +59,26 @@ partial class MainForm {
       System.Windows.Forms.Label label30;
       System.Windows.Forms.Label label31;
       System.Windows.Forms.Label label32;
-      this.btBack = new System.Windows.Forms.Button();
+      System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
       this.nudCurrentPage = new System.Windows.Forms.NumericUpDown();
-      this.btForward = new System.Windows.Forms.Button();
       this.tlpCharacters = new System.Windows.Forms.TableLayoutPanel();
+      this.lCodepageName = new System.Windows.Forms.Label();
+      this.ttHelp = new System.Windows.Forms.ToolTip(this.components);
+      this.btBack = new System.Windows.Forms.Button();
+      this.lCodepageError = new System.Windows.Forms.Label();
+      this.lCodepageSuccess = new System.Windows.Forms.Label();
+      this.btForward = new System.Windows.Forms.Button();
+      this.lCodepageLoading = new System.Windows.Forms.Label();
+      this.bError = new System.Windows.Forms.Button();
+      this.bWhiteSpace = new System.Windows.Forms.Button();
+      this.bControl = new System.Windows.Forms.Button();
+      this.bPunctuation = new System.Windows.Forms.Button();
+      this.bLower = new System.Windows.Forms.Button();
+      this.bUpper = new System.Windows.Forms.Button();
+      this.bLetter = new System.Windows.Forms.Button();
+      this.bDigit = new System.Windows.Forms.Button();
+      this.bNumber = new System.Windows.Forms.Button();
+      this.bOther = new System.Windows.Forms.Button();
       flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       label1 = new System.Windows.Forms.Label();
@@ -96,10 +113,12 @@ partial class MainForm {
       label30 = new System.Windows.Forms.Label();
       label31 = new System.Windows.Forms.Label();
       label32 = new System.Windows.Forms.Label();
+      flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
       flowLayoutPanel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.nudCurrentPage)).BeginInit();
       tableLayoutPanel1.SuspendLayout();
       this.tlpCharacters.SuspendLayout();
+      flowLayoutPanel2.SuspendLayout();
       this.SuspendLayout();
       // 
       // flowLayoutPanel1
@@ -109,27 +128,21 @@ partial class MainForm {
       flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
       flowLayoutPanel1.Controls.Add(this.btBack);
       flowLayoutPanel1.Controls.Add(this.nudCurrentPage);
+      flowLayoutPanel1.Controls.Add(this.lCodepageError);
+      flowLayoutPanel1.Controls.Add(this.lCodepageSuccess);
+      flowLayoutPanel1.Controls.Add(this.lCodepageLoading);
       flowLayoutPanel1.Controls.Add(this.btForward);
-      flowLayoutPanel1.Location = new System.Drawing.Point(143, 0);
+      flowLayoutPanel1.Location = new System.Drawing.Point(187, 0);
       flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
       flowLayoutPanel1.Name = "flowLayoutPanel1";
-      flowLayoutPanel1.Size = new System.Drawing.Size(199, 26);
+      flowLayoutPanel1.Size = new System.Drawing.Size(210, 32);
       flowLayoutPanel1.TabIndex = 0;
-      // 
-      // btBack
-      // 
-      this.btBack.Location = new System.Drawing.Point(3, 3);
-      this.btBack.Name = "btBack";
-      this.btBack.Size = new System.Drawing.Size(64, 20);
-      this.btBack.TabIndex = 0;
-      this.btBack.Text = "Back";
-      this.btBack.UseVisualStyleBackColor = true;
-      this.btBack.Click += new System.EventHandler(this.btBack_Click);
       // 
       // nudCurrentPage
       // 
+      this.nudCurrentPage.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.nudCurrentPage.AutoSize = true;
-      this.nudCurrentPage.Location = new System.Drawing.Point(73, 3);
+      this.nudCurrentPage.Location = new System.Drawing.Point(35, 6);
       this.nudCurrentPage.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -144,6 +157,7 @@ partial class MainForm {
       this.nudCurrentPage.Size = new System.Drawing.Size(53, 20);
       this.nudCurrentPage.TabIndex = 1;
       this.nudCurrentPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+      this.ttHelp.SetToolTip(this.nudCurrentPage, "Enter Codepage and Press TAB");
       this.nudCurrentPage.Value = new decimal(new int[] {
             55555,
             0,
@@ -151,29 +165,23 @@ partial class MainForm {
             0});
       this.nudCurrentPage.ValueChanged += new System.EventHandler(this.nudCurrentPage_ValueChanged);
       // 
-      // btForward
-      // 
-      this.btForward.Location = new System.Drawing.Point(132, 3);
-      this.btForward.Name = "btForward";
-      this.btForward.Size = new System.Drawing.Size(64, 20);
-      this.btForward.TabIndex = 0;
-      this.btForward.Text = "Forward";
-      this.btForward.UseVisualStyleBackColor = true;
-      this.btForward.Click += new System.EventHandler(this.btForward_Click);
-      // 
       // tableLayoutPanel1
       // 
       tableLayoutPanel1.ColumnCount = 1;
-      tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel1.Controls.Add(flowLayoutPanel1, 0, 0);
-      tableLayoutPanel1.Controls.Add(this.tlpCharacters, 0, 1);
+      tableLayoutPanel1.Controls.Add(this.tlpCharacters, 0, 3);
+      tableLayoutPanel1.Controls.Add(this.lCodepageName, 0, 1);
+      tableLayoutPanel1.Controls.Add(flowLayoutPanel2, 0, 2);
       tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
       tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       tableLayoutPanel1.Name = "tableLayoutPanel1";
-      tableLayoutPanel1.RowCount = 2;
+      tableLayoutPanel1.RowCount = 4;
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      tableLayoutPanel1.Size = new System.Drawing.Size(485, 527);
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      tableLayoutPanel1.Size = new System.Drawing.Size(584, 587);
       tableLayoutPanel1.TabIndex = 1;
       // 
       // tlpCharacters
@@ -231,7 +239,7 @@ partial class MainForm {
       this.tlpCharacters.Controls.Add(label30, 0, 14);
       this.tlpCharacters.Controls.Add(label31, 0, 15);
       this.tlpCharacters.Controls.Add(label32, 0, 16);
-      this.tlpCharacters.Location = new System.Drawing.Point(13, 38);
+      this.tlpCharacters.Location = new System.Drawing.Point(62, 100);
       this.tlpCharacters.Name = "tlpCharacters";
       this.tlpCharacters.RowCount = 17;
       this.tlpCharacters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
@@ -606,11 +614,224 @@ partial class MainForm {
       label32.TabIndex = 0;
       label32.Text = "F.";
       // 
+      // lCodepageName
+      // 
+      this.lCodepageName.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.lCodepageName.AutoSize = true;
+      this.lCodepageName.Location = new System.Drawing.Point(274, 40);
+      this.lCodepageName.Margin = new System.Windows.Forms.Padding(8);
+      this.lCodepageName.Name = "lCodepageName";
+      this.lCodepageName.Size = new System.Drawing.Size(35, 13);
+      this.lCodepageName.TabIndex = 2;
+      this.lCodepageName.Text = "Name";
+      // 
+      // btBack
+      // 
+      this.btBack.AutoSize = true;
+      this.btBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.btBack.Image = global::CodepageSelector.Properties.Resources.AutoRewind;
+      this.btBack.Location = new System.Drawing.Point(3, 3);
+      this.btBack.Name = "btBack";
+      this.btBack.Size = new System.Drawing.Size(26, 26);
+      this.btBack.TabIndex = 0;
+      this.btBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.ttHelp.SetToolTip(this.btBack, "Backward");
+      this.btBack.UseVisualStyleBackColor = true;
+      this.btBack.Click += new System.EventHandler(this.btBack_Click);
+      // 
+      // lCodepageError
+      // 
+      this.lCodepageError.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.lCodepageError.Image = global::CodepageSelector.Properties.Resources.Error;
+      this.lCodepageError.Location = new System.Drawing.Point(94, 4);
+      this.lCodepageError.Name = "lCodepageError";
+      this.lCodepageError.Size = new System.Drawing.Size(23, 23);
+      this.lCodepageError.TabIndex = 2;
+      this.ttHelp.SetToolTip(this.lCodepageError, "Codepage unsupported on this system");
+      this.lCodepageError.Visible = false;
+      // 
+      // lCodepageSuccess
+      // 
+      this.lCodepageSuccess.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.lCodepageSuccess.Image = global::CodepageSelector.Properties.Resources.Success;
+      this.lCodepageSuccess.Location = new System.Drawing.Point(123, 4);
+      this.lCodepageSuccess.Name = "lCodepageSuccess";
+      this.lCodepageSuccess.Size = new System.Drawing.Size(23, 23);
+      this.lCodepageSuccess.TabIndex = 3;
+      this.ttHelp.SetToolTip(this.lCodepageSuccess, "Codepage loaded");
+      this.lCodepageSuccess.Visible = false;
+      // 
+      // btForward
+      // 
+      this.btForward.AutoSize = true;
+      this.btForward.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.btForward.Image = global::CodepageSelector.Properties.Resources.AutoForward;
+      this.btForward.Location = new System.Drawing.Point(181, 3);
+      this.btForward.Name = "btForward";
+      this.btForward.Size = new System.Drawing.Size(26, 26);
+      this.btForward.TabIndex = 2;
+      this.btForward.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+      this.ttHelp.SetToolTip(this.btForward, "Forward");
+      this.btForward.UseVisualStyleBackColor = true;
+      this.btForward.Click += new System.EventHandler(this.btForward_Click);
+      // 
+      // lCodepageLoading
+      // 
+      this.lCodepageLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.lCodepageLoading.Image = global::CodepageSelector.Properties.Resources._16x11_Loading_Animation;
+      this.lCodepageLoading.Location = new System.Drawing.Point(152, 4);
+      this.lCodepageLoading.Name = "lCodepageLoading";
+      this.lCodepageLoading.Size = new System.Drawing.Size(23, 23);
+      this.lCodepageLoading.TabIndex = 4;
+      this.ttHelp.SetToolTip(this.lCodepageLoading, "Codepage loading...");
+      this.lCodepageLoading.Visible = false;
+      // 
+      // bError
+      // 
+      this.bError.AutoSize = true;
+      this.bError.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.bError.ForeColor = System.Drawing.Color.White;
+      this.bError.Location = new System.Drawing.Point(3, 3);
+      this.bError.Name = "bError";
+      this.bError.Size = new System.Drawing.Size(39, 23);
+      this.bError.TabIndex = 0;
+      this.bError.Text = "Error";
+      this.bError.UseVisualStyleBackColor = true;
+      this.bError.Click += new System.EventHandler(this.bError_Click);
+      // 
+      // bWhiteSpace
+      // 
+      this.bWhiteSpace.AutoSize = true;
+      this.bWhiteSpace.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.bWhiteSpace.Location = new System.Drawing.Point(442, 3);
+      this.bWhiteSpace.Name = "bWhiteSpace";
+      this.bWhiteSpace.Size = new System.Drawing.Size(76, 23);
+      this.bWhiteSpace.TabIndex = 0;
+      this.bWhiteSpace.Text = "WhiteSpace";
+      this.bWhiteSpace.UseVisualStyleBackColor = true;
+      this.bWhiteSpace.Click += new System.EventHandler(this.bWhiteSpace_Click);
+      // 
+      // bControl
+      // 
+      this.bControl.AutoSize = true;
+      this.bControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.bControl.Location = new System.Drawing.Point(48, 3);
+      this.bControl.Name = "bControl";
+      this.bControl.Size = new System.Drawing.Size(50, 23);
+      this.bControl.TabIndex = 0;
+      this.bControl.Text = "Control";
+      this.bControl.UseVisualStyleBackColor = true;
+      this.bControl.Click += new System.EventHandler(this.bControl_Click);
+      // 
+      // bPunctuation
+      // 
+      this.bPunctuation.AutoSize = true;
+      this.bPunctuation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.bPunctuation.Location = new System.Drawing.Point(104, 3);
+      this.bPunctuation.Name = "bPunctuation";
+      this.bPunctuation.Size = new System.Drawing.Size(74, 23);
+      this.bPunctuation.TabIndex = 0;
+      this.bPunctuation.Text = "Punctuation";
+      this.bPunctuation.UseVisualStyleBackColor = true;
+      this.bPunctuation.Click += new System.EventHandler(this.bPunctuation_Click);
+      // 
+      // bLower
+      // 
+      this.bLower.AutoSize = true;
+      this.bLower.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.bLower.Location = new System.Drawing.Point(184, 3);
+      this.bLower.Name = "bLower";
+      this.bLower.Size = new System.Drawing.Size(46, 23);
+      this.bLower.TabIndex = 0;
+      this.bLower.Text = "Lower";
+      this.bLower.UseVisualStyleBackColor = true;
+      this.bLower.Click += new System.EventHandler(this.bLower_Click);
+      // 
+      // bUpper
+      // 
+      this.bUpper.AutoSize = true;
+      this.bUpper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.bUpper.Location = new System.Drawing.Point(236, 3);
+      this.bUpper.Name = "bUpper";
+      this.bUpper.Size = new System.Drawing.Size(46, 23);
+      this.bUpper.TabIndex = 0;
+      this.bUpper.Text = "Upper";
+      this.bUpper.UseVisualStyleBackColor = true;
+      this.bUpper.Click += new System.EventHandler(this.bUpper_Click);
+      // 
+      // bLetter
+      // 
+      this.bLetter.AutoSize = true;
+      this.bLetter.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.bLetter.Location = new System.Drawing.Point(288, 3);
+      this.bLetter.Name = "bLetter";
+      this.bLetter.Size = new System.Drawing.Size(44, 23);
+      this.bLetter.TabIndex = 0;
+      this.bLetter.Text = "Letter";
+      this.bLetter.UseVisualStyleBackColor = true;
+      this.bLetter.Click += new System.EventHandler(this.bLetter_Click);
+      // 
+      // bDigit
+      // 
+      this.bDigit.AutoSize = true;
+      this.bDigit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.bDigit.Location = new System.Drawing.Point(338, 3);
+      this.bDigit.Name = "bDigit";
+      this.bDigit.Size = new System.Drawing.Size(38, 23);
+      this.bDigit.TabIndex = 0;
+      this.bDigit.Text = "Digit";
+      this.bDigit.UseVisualStyleBackColor = true;
+      this.bDigit.Click += new System.EventHandler(this.bDigit_Click);
+      // 
+      // bNumber
+      // 
+      this.bNumber.AutoSize = true;
+      this.bNumber.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.bNumber.Location = new System.Drawing.Point(382, 3);
+      this.bNumber.Name = "bNumber";
+      this.bNumber.Size = new System.Drawing.Size(54, 23);
+      this.bNumber.TabIndex = 0;
+      this.bNumber.Text = "Number";
+      this.bNumber.UseVisualStyleBackColor = true;
+      this.bNumber.Click += new System.EventHandler(this.bNumber_Click);
+      // 
+      // bOther
+      // 
+      this.bOther.AutoSize = true;
+      this.bOther.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.bOther.Location = new System.Drawing.Point(524, 3);
+      this.bOther.Name = "bOther";
+      this.bOther.Size = new System.Drawing.Size(43, 23);
+      this.bOther.TabIndex = 0;
+      this.bOther.Text = "Other";
+      this.bOther.UseVisualStyleBackColor = true;
+      this.bOther.Click += new System.EventHandler(this.bOther_Click);
+      // 
+      // flowLayoutPanel2
+      // 
+      flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.None;
+      flowLayoutPanel2.AutoSize = true;
+      flowLayoutPanel2.Controls.Add(this.bError);
+      flowLayoutPanel2.Controls.Add(this.bControl);
+      flowLayoutPanel2.Controls.Add(this.bPunctuation);
+      flowLayoutPanel2.Controls.Add(this.bLower);
+      flowLayoutPanel2.Controls.Add(this.bUpper);
+      flowLayoutPanel2.Controls.Add(this.bLetter);
+      flowLayoutPanel2.Controls.Add(this.bDigit);
+      flowLayoutPanel2.Controls.Add(this.bNumber);
+      flowLayoutPanel2.Controls.Add(this.bWhiteSpace);
+      flowLayoutPanel2.Controls.Add(this.bOther);
+      flowLayoutPanel2.Location = new System.Drawing.Point(7, 61);
+      flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+      flowLayoutPanel2.Name = "flowLayoutPanel2";
+      flowLayoutPanel2.Size = new System.Drawing.Size(570, 29);
+      flowLayoutPanel2.TabIndex = 4;
+      // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(485, 527);
+      this.ClientSize = new System.Drawing.Size(584, 587);
       this.Controls.Add(tableLayoutPanel1);
       this.Name = "MainForm";
       this.Text = "CodepageSelector";
@@ -621,6 +842,8 @@ partial class MainForm {
       tableLayoutPanel1.PerformLayout();
       this.tlpCharacters.ResumeLayout(false);
       this.tlpCharacters.PerformLayout();
+      flowLayoutPanel2.ResumeLayout(false);
+      flowLayoutPanel2.PerformLayout();
       this.ResumeLayout(false);
 
   }
@@ -631,4 +854,19 @@ partial class MainForm {
   private System.Windows.Forms.NumericUpDown nudCurrentPage;
   private System.Windows.Forms.Button btForward;
   private System.Windows.Forms.TableLayoutPanel tlpCharacters;
+  private System.Windows.Forms.Label lCodepageName;
+  private System.Windows.Forms.ToolTip ttHelp;
+  private System.Windows.Forms.Label lCodepageError;
+  private System.Windows.Forms.Label lCodepageSuccess;
+  private System.Windows.Forms.Label lCodepageLoading;
+  private System.Windows.Forms.Button bError;
+  private System.Windows.Forms.Button bControl;
+  private System.Windows.Forms.Button bPunctuation;
+  private System.Windows.Forms.Button bLower;
+  private System.Windows.Forms.Button bUpper;
+  private System.Windows.Forms.Button bLetter;
+  private System.Windows.Forms.Button bDigit;
+  private System.Windows.Forms.Button bNumber;
+  private System.Windows.Forms.Button bWhiteSpace;
+  private System.Windows.Forms.Button bOther;
 }

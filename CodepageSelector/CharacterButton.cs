@@ -38,8 +38,8 @@ internal class CharacterButton : Label {
   private void _AdjustColor() {
     var chr = this.Character;
     if (chr == null) {
-      this.BackColor = Color.Black;
-      this.ForeColor = Color.Black;
+      this.BackColor = ColorPalette.Error;
+      this.ForeColor = ColorPalette.Error;
       return;
     }
 
@@ -56,18 +56,18 @@ internal class CharacterButton : Label {
     static Color GetCharacterClassColor(char character) =>
       character switch {
 
-        _ when char.IsControl(character) => Color.Salmon,
-        _ when char.IsWhiteSpace(character) => Color.LightSkyBlue,
-        _ when char.IsPunctuation(character) => Color.Lavender,
+        _ when char.IsControl(character) => ColorPalette.Control,
+        _ when char.IsWhiteSpace(character) => ColorPalette.WhiteSpace,
+        _ when char.IsPunctuation(character) => ColorPalette.Punctuation,
 
-        _ when char.IsLower(character) => Color.LightGoldenrodYellow,
-        _ when char.IsUpper(character) => Color.LightYellow,
-        _ when char.IsLetter(character) => Color.Yellow,
+        _ when char.IsLower(character) => ColorPalette.Lower,
+        _ when char.IsUpper(character) => ColorPalette.Upper,
+        _ when char.IsLetter(character) => ColorPalette.Letter,
 
-        _ when char.IsDigit(character) => Color.LimeGreen,
-        _ when char.IsNumber(character) => Color.PaleGreen,
+        _ when char.IsDigit(character) => ColorPalette.Digit,
+        _ when char.IsNumber(character) => ColorPalette.Number,
 
-        _ => Color.White
+        _ => ColorPalette.Others
       };
   }
 
