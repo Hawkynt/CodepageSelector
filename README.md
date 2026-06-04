@@ -1,17 +1,21 @@
 # CodepageSelector
 
-[![Build](https://github.com/Hawkynt/CodepageSelector/actions/workflows/Build.yml/badge.svg)](https://github.com/Hawkynt/CodepageSelector/actions/workflows/Build.yml)
-[![Tests](https://github.com/Hawkynt/CodepageSelector/actions/workflows/Tests.yml/badge.svg)](https://github.com/Hawkynt/CodepageSelector/actions/workflows/Tests.yml)
-[![Last Commit](https://img.shields.io/github/last-commit/Hawkynt/CodepageSelector?branch=master) ![Activity](https://img.shields.io/github/commit-activity/y/Hawkynt/CodepageSelector?branch=master)](https://github.com/Hawkynt/CodepageSelector/commits/master)
-[![License](https://img.shields.io/badge/License-LGPL_3.0-blue)](https://licenses.nuget.org/LGPL-3.0-or-later)
-![Language](https://img.shields.io/github/languages/top/Hawkynt/CodepageSelector?color=purple)
-![LineCount](https://tokei.rs/b1/github/Hawkynt/CodepageSelector?color=magenta)
-![Size](https://img.shields.io/github/languages/code-size/Hawkynt/CodepageSelector?color=green) /
- ![Repo-Size](https://img.shields.io/github/repo-size/Hawkynt/CodepageSelector?color=red)
-[![Stars](https://img.shields.io/github/stars/Hawkynt/CodepageSelector?color=yellow)](https://github.com/Hawkynt/CodepageSelector/stargazers)
-[![NuGet.org](https://img.shields.io/badge/Packages_on-NuGet.org-dodgerblue)](https://www.nuget.org/profiles/Hawkynt)
+[![License](https://img.shields.io/github/license/Hawkynt/CodepageSelector)](https://github.com/Hawkynt/CodepageSelector/blob/master/LICENSE)
+[![Language](https://img.shields.io/github/languages/top/Hawkynt/CodepageSelector?color=8957D5)](https://github.com/Hawkynt/CodepageSelector)
 
-![Build History](https://buildstats.info/github/chart/hawkynt/CodepageSelector)
+[![CI](https://github.com/Hawkynt/CodepageSelector/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/Hawkynt/CodepageSelector/actions/workflows/ci.yml)
+![Last Commit](https://img.shields.io/github/last-commit/Hawkynt/CodepageSelector?branch=master)
+![Activity](https://img.shields.io/github/commit-activity/m/Hawkynt/CodepageSelector)
+
+[![Stars](https://img.shields.io/github/stars/Hawkynt/CodepageSelector?color=FFD700)](https://github.com/Hawkynt/CodepageSelector/stargazers)
+[![Forks](https://img.shields.io/github/forks/Hawkynt/CodepageSelector?color=008080)](https://github.com/Hawkynt/CodepageSelector/network/members)
+[![Issues](https://img.shields.io/github/issues/Hawkynt/CodepageSelector)](https://github.com/Hawkynt/CodepageSelector/issues)
+![Code Size](https://img.shields.io/github/languages/code-size/Hawkynt/CodepageSelector?color=4CAF50)
+![Repo Size](https://img.shields.io/github/repo-size/Hawkynt/CodepageSelector?color=FF9800)
+
+[![Release](https://img.shields.io/github/v/release/Hawkynt/CodepageSelector?sort=semver)](https://github.com/Hawkynt/CodepageSelector/releases/latest)
+[![Nightly](https://img.shields.io/github/v/release/Hawkynt/CodepageSelector?include_prereleases=true&sort=date&label=nightly&color=FF9800)](https://github.com/Hawkynt/CodepageSelector/releases)
+[![Downloads](https://img.shields.io/github/downloads/Hawkynt/CodepageSelector/total)](https://github.com/Hawkynt/CodepageSelector/releases)
 
 This is an interactive C# application that allows users to navigate through various code pages and select characters in a 16x16 grid layout. This tool is useful for developers, linguists, and anyone working with different character encodings.
 
