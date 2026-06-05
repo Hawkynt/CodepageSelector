@@ -1,10 +1,10 @@
 # CodepageSelector
 
-[![License](https://img.shields.io/github/license/Hawkynt/CodepageSelector)](https://github.com/Hawkynt/CodepageSelector/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/Hawkynt/CodepageSelector)](https://github.com/Hawkynt/CodepageSelector/blob/main/LICENSE)
 [![Language](https://img.shields.io/github/languages/top/Hawkynt/CodepageSelector?color=8957D5)](https://github.com/Hawkynt/CodepageSelector)
 
-[![CI](https://github.com/Hawkynt/CodepageSelector/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/Hawkynt/CodepageSelector/actions/workflows/ci.yml)
-![Last Commit](https://img.shields.io/github/last-commit/Hawkynt/CodepageSelector?branch=master)
+[![CI](https://github.com/Hawkynt/CodepageSelector/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Hawkynt/CodepageSelector/actions/workflows/ci.yml)
+![Last Commit](https://img.shields.io/github/last-commit/Hawkynt/CodepageSelector?branch=main)
 ![Activity](https://img.shields.io/github/commit-activity/m/Hawkynt/CodepageSelector)
 
 [![Stars](https://img.shields.io/github/stars/Hawkynt/CodepageSelector?color=FFD700)](https://github.com/Hawkynt/CodepageSelector/stargazers)
@@ -17,11 +17,11 @@
 [![Nightly](https://img.shields.io/github/v/release/Hawkynt/CodepageSelector?include_prereleases=true&sort=date&label=nightly&color=FF9800)](https://github.com/Hawkynt/CodepageSelector/releases)
 [![Downloads](https://img.shields.io/github/downloads/Hawkynt/CodepageSelector/total)](https://github.com/Hawkynt/CodepageSelector/releases)
 
-This is an interactive C# application that allows users to navigate through various code pages and select characters in a 16x16 grid layout. This tool is useful for developers, linguists, and anyone working with different character encodings.
+> An interactive C# application for navigating code pages and picking characters from a 16x16 grid — useful for developers, linguists, and anyone wrangling character encodings.
 
 ![Screenshot](GUI.png)
 
-## Features
+## ✨ Features
 
 - **Code Page Navigation**: Users can navigate through different code pages using the "Back" and "Forward" buttons or by directly entering a code page number and pressing the TAB-key.
 - **Character Selection**: Each code page is displayed in a 16x16 grid, allowing users to select or deselect characters by clicking on them. By default, letters and digits are pre-selected when a new code page is loaded.
@@ -49,14 +49,14 @@ This is an interactive C# application that allows users to navigate through vari
 - .NET Framework 4.8 or later
 - Windows operating system or something else with support for WinForms
 
-## Installation
+## 📦 Installation
 
 1. Clone or download this repository.
 2. Ensure [.NET Framework 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48) or later is installed on your system.
 3. Open the project in Visual Studio or your preferred IDE that supports .NET Framework applications.
 4. Build and run the application.
 
-## Usage
+## 🚀 Usage
 
 1. **Navigating Code Pages**: Use the "Back" and "Forward" buttons to scroll through code pages. You can also enter a specific code page number in the input box between the navigation buttons.
 2. **Selecting Characters**: Click on any character in the 16x16 grid to select or deselect it. Selected characters are highlighted. Dragging over multiple characters is supported.
@@ -73,10 +73,19 @@ This is an interactive C# application that allows users to navigate through vari
 
 - [**FrameworkExtensions.Corlib**](https://www.nuget.org/packages/FrameworkExtensions.Corlib): This package provides essential extensions for .NET Framework applications.
 
-## License
+## 🤝 Contributing
 
-- [LGPL-3.0](https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License)
 - give credit to ***Hawkynt*** when using
 - please do **pull**-requests if you add something
 - report issues to and get in contact at [GitHub](https://github.com/Hawkynt/CodepageSelector)
-- always deliver the [LICENSE](https://www.gnu.org/licenses/lgpl-3.0.txt) file to your code's customer
+
+## ❤️ Support
+
+If this project saves you time or money, consider supporting its development:
+
+[![GitHub Sponsors](https://img.shields.io/badge/GitHub-Sponsor-EA4AAA?logo=githubsponsors)](https://github.com/sponsors/Hawkynt)
+[![PayPal](https://img.shields.io/badge/PayPal-Donate-00457C?logo=paypal)](https://www.paypal.me/hawkynt)
+
+## 📜 License
+
+Licensed under LGPL-3.0-or-later — see [LICENSE](LICENSE).
