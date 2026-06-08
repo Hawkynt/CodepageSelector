@@ -13,7 +13,7 @@
 ![Code Size](https://img.shields.io/github/languages/code-size/Hawkynt/CodepageSelector?color=4CAF50)
 ![Repo Size](https://img.shields.io/github/repo-size/Hawkynt/CodepageSelector?color=FF9800)
 
-[![Release](https://img.shields.io/github/v/release/Hawkynt/CodepageSelector?sort=semver)](https://github.com/Hawkynt/CodepageSelector/releases/latest)
+[![Release](https://img.shields.io/github/v/release/Hawkynt/CodepageSelector)](https://github.com/Hawkynt/CodepageSelector/releases/latest)
 [![Nightly](https://img.shields.io/github/v/release/Hawkynt/CodepageSelector?include_prereleases&sort=date&label=nightly&color=FF9800)](https://github.com/Hawkynt/CodepageSelector/releases)
 [![Downloads](https://img.shields.io/github/downloads/Hawkynt/CodepageSelector/total)](https://github.com/Hawkynt/CodepageSelector/releases)
 
