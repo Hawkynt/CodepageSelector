@@ -14,7 +14,7 @@
 ![Repo Size](https://img.shields.io/github/repo-size/Hawkynt/CodepageSelector?color=FF9800)
 
 [![Release](https://img.shields.io/github/v/release/Hawkynt/CodepageSelector?sort=semver)](https://github.com/Hawkynt/CodepageSelector/releases/latest)
-[![Nightly](https://img.shields.io/github/v/release/Hawkynt/CodepageSelector?include_prereleases=true&sort=date&label=nightly&color=FF9800)](https://github.com/Hawkynt/CodepageSelector/releases)
+[![Nightly](https://img.shields.io/github/v/release/Hawkynt/CodepageSelector?include_prereleases&sort=date&label=nightly&color=FF9800)](https://github.com/Hawkynt/CodepageSelector/releases)
 [![Downloads](https://img.shields.io/github/downloads/Hawkynt/CodepageSelector/total)](https://github.com/Hawkynt/CodepageSelector/releases)
 
 > An interactive C# application for navigating code pages and picking characters from a 16x16 grid — useful for developers, linguists, and anyone wrangling character encodings.
