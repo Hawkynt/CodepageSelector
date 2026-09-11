@@ -19,7 +19,14 @@
 
 > An interactive C# application for navigating code pages and picking characters from a 16x16 grid — useful for developers, linguists, and anyone wrangling character encodings.
 
-![Screenshot](GUI.png)
+## 🧭 Vision
+
+Picking a character out of a code page is a thing developers, translators and anyone debugging an
+encoding problem do constantly, and the usual answer — a table on a web page, or a character map that
+hides the code page entirely — makes the one number you care about the hardest to see.
+
+This shows the code page itself: a 16x16 grid you can step through by page, where the byte value, the
+glyph and the encoding are all on screen at once.
 
 ## ✨ Features
 
@@ -44,11 +51,6 @@
   
   This format provides an efficient way to store character selections, especially when dealing with large sets of characters or multiple code pages. Additionally, it is directly usable in C# code if you create a `Dictionary<int, Range[]>` and utilize the collection initialization syntax.
 
-## Requirements
-
-- .NET Framework 4.8 or later
-- Windows operating system or something else with support for WinForms
-
 ## 📦 Installation
 
 1. Clone or download this repository.
@@ -56,22 +58,33 @@
 3. Open the project in Visual Studio or your preferred IDE that supports .NET Framework applications.
 4. Build and run the application.
 
-## 🚀 Usage
+## 🚀 Quick start
 
 1. **Navigating Code Pages**: Use the "Back" and "Forward" buttons to scroll through code pages. You can also enter a specific code page number in the input box between the navigation buttons.
 2. **Selecting Characters**: Click on any character in the 16x16 grid to select or deselect it. Selected characters are highlighted. Dragging over multiple characters is supported.
 3. **Saving Selection**: The selected characters are saved in the `Selection.dict` file located in the `Data` folder. Saving is automatically, loading occurs whenever the codepage is changed.
 
-## Project Structure
+## 💻 Requirements
+
+- .NET Framework 4.8 or later
+- Windows operating system or something else with support for WinForms
+
+## 📁 Project structure
 
 - **`Program.cs`**: The main entry point for the application - nothing to see here.
 - **`MainForm.cs`**: Contains the main form for the user interface and handles code page navigation and character selection.
 - **`Data\Selection.dict`**: A dictionary file that stores selected characters. This file is updated whenever codepage is changed.
 - **`Properties`**: Contains project metadata such as version information and assembly attributes.
 
-## Dependencies
+## 🔌 Dependencies
 
 - [**FrameworkExtensions.Corlib**](https://www.nuget.org/packages/FrameworkExtensions.Corlib): This package provides essential extensions for .NET Framework applications.
+
+## 🛠️ Building
+
+```bash
+dotnet build -c Release
+```
 
 ## 🤝 Contributing
 
